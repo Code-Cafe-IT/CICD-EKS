@@ -22,8 +22,6 @@ pipeline {
                 script {
                     dir('kubernetes') {
                         sh "aws eks update-kubeconfig --region us-east-1 --name myapp-eks-cluster"
-                        sh "cat /var/lib/jenkins/.kube/config"
-                        sh "export KUBECONFIG=/var/lib/jenkins/.kube/config"
                         sh "kubectl apply -f nginx-deployment.yaml"
                         sh "kubectl apply -f nginx-service.yaml"
                     }
