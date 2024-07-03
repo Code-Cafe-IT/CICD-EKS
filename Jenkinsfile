@@ -21,9 +21,8 @@ pipeline {
             steps {
                 script {
                     dir('kubernetes') {
-                        sh "aws eks update-kubeconfig --region us-east-1 --name myapp-eks-cluster"
+                        sh "aws eks update-kubeconfig --region us-east-1 --name myapp-eks-cluster --profile duclm3"
                         sh "cat /var/lib/jenkins/.kube/config"
-                        sh "kubectl get nodes"
                         sh "kubectl apply -f nginx-deployment.yaml"
                         sh "kubectl apply -f nginx-service.yaml"
                     }
