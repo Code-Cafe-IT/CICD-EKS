@@ -21,6 +21,11 @@ pipeline {
             steps {
                 script {
                     dir('kubernetes') {
+                        sh "aws configure"
+                        sh "AWS_ACCESS_KEY_ID"
+                        sh "AWS_SECRET_ACCESS_KEY"
+                        sh "AWS_DEFAULT_REGION"
+                        sh "JSON"
                         sh "aws eks update-kubeconfig --region us-east-1 --name myapp-eks-cluster --profile duclm3"
                         sh "cat /var/lib/jenkins/.kube/config"
                         sh "kubectl apply -f nginx-deployment.yaml"
